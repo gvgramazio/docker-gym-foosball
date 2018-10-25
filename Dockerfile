@@ -39,3 +39,7 @@ RUN apt-get install -y xvfb
 # Download gym-foosball
 RUN git clone https://gitlab.com/gvgramazio/gym-foosball.git
 RUN python3 -m pip install -e gym-foosball
+
+# Download keras-rl
+RUN git clone https://github.com/gvgramazio/keras-rl.git
+RUN python3 -m pip install -e keras-rl
