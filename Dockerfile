@@ -4,12 +4,12 @@ RUN apt-get update
 
 
 # Download V-REP v3.5 from the official website
-RUN apt-get install -y wget
+RUN sudo apt-get install -y wget
 RUN wget http://coppeliarobotics.com/files/V-REP_PRO_EDU_V3_5_0_Linux.tar.gz
 RUN tar -xf V-REP_PRO_EDU_V3_5_0_Linux.tar.gz
 
 # Install V-REP dependecies
-RUN apt-get install -y \
+RUN sudo apt-get install -y \
   libglib2.0-0  \
   libgl1-mesa-glx \
   xcb \
@@ -26,7 +26,7 @@ RUN echo 'export QT_DEBUG_PLUGINS=1' >> ~/.bashrc
 RUN echo 'export PATH=/V-REP_PRO_EDU_V3_5_0_Linux/:$PATH' >> ~/.bashrc
 
 # Install python3 and python packages
-RUN apt-get install -y git python3 python3-pip
+RUN sudo apt-get install -y git python3 python3-pip
 RUN python3 -m pip install numpy matplotlib psutil
 
 # Download vrepper
