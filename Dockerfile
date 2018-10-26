@@ -2,6 +2,10 @@ FROM gvgramazio/gym:latest
 
 RUN sudo apt-get update
 
+
+# Install xvfb to emulates a dumb framebuffer using virtual memory.
+RUN sudo apt-get install -y xvfb
+
 # Download V-REP v3.5 from the official website
 RUN sudo apt-get install -y wget
 RUN wget -P /home/user/che/ http://coppeliarobotics.com/files/V-REP_PRO_EDU_V3_5_0_Linux.tar.gz
@@ -21,23 +25,20 @@ RUN sudo apt-get install -y \
 
 # Export paths
 RUN echo 'export QT_DEBUG_PLUGINS=1' >> ~/.bashrc
-RUN echo 'export PATH=/V-REP_PRO_EDU_V3_5_0_Linux/:$PATH' >> ~/.bashrc
+RUN echo 'export PATH=/home/user/che/V-REP_PRO_EDU_V3_5_0_Linux/:$PATH' >> ~/.bashrc
 
 # Install python3 and python packages
 RUN sudo apt-get install -y git python3 python3-pip
 RUN python3 -m pip install numpy matplotlib psutil
 
 # Download vrepper
-RUN git clone https://github.com/gvgramazio/vrepper.git /home/user/che/git/vrepper
-RUN python3 -m pip install -e /home/user/che/git/vrepper
-
-# Install xvfb to emulates a dumb framebuffer using virtual memory.
-RUN sudo apt-get install -y xvfb
+RUN git clone https://github.com/gvgramazio/vrepper.git /home/user/che/vrepper
+RUN python3 -m pip install -e /home/user/che/vrepper
 
 # Download gym-foosball
-RUN git clone https://gitlab.com/gvgramazio/gym-foosball.git /home/user/che/git/gym-foosball
-RUN python3 -m pip install -e /home/user/che/git/gym-foosball
+# RUN git clone https://gitlab.com/gvgramazio/gym-foosball.git /home/user/che/git/gym-foosball
+# RUN python3 -m pip install -e /home/user/che/git/gym-foosball
 
 # Download keras-rl
-RUN git clone https://github.com/gvgramazio/keras-rl.git /home/user/che/git/keras-rl
-RUN python3 -m pip install -e /home/user/che/git/keras-rl
+# RUN git clone https://github.com/gvgramazio/keras-rl.git /home/user/che/git/keras-rl
+# RUN python3 -m pip install -e /home/user/che/git/keras-rl
