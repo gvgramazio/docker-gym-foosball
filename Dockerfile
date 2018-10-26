@@ -1,7 +1,6 @@
 FROM gvgramazio/gym:latest
 
-RUN apt-get update
-
+RUN sudo apt-get update
 
 # Download V-REP v3.5 from the official website
 RUN sudo apt-get install -y wget
@@ -34,7 +33,7 @@ RUN git clone https://github.com/gvgramazio/vrepper.git
 RUN python3 -m pip install -e vrepper
 
 # Install xvfb to emulates a dumb framebuffer using virtual memory.
-RUN apt-get install -y xvfb
+RUN sudo apt-get install -y xvfb
 
 # Download gym-foosball
 RUN git clone https://gitlab.com/gvgramazio/gym-foosball.git
